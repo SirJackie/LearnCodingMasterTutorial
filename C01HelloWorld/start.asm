@@ -1,0 +1,47 @@
+mov ax, 0b800h
+mov ds, ax
+
+mov byte [0x00],'H'
+mov byte [0x02],'e'
+mov byte [0x04],'l'
+mov byte [0x06],'l'
+mov byte [0x08],'o'
+mov byte [0x0a],' '
+mov byte [0x0c],'W'
+mov byte [0x0e],'o'
+mov byte [0x10],'r'
+mov byte [0x12],'l'
+mov byte [0x14],'d'
+mov byte [0x16],''
+mov byte [0x18],'f'
+mov byte [0x1a],'r'
+mov byte [0x1c],'o'
+mov byte [0x1e],'m'
+mov byte [0x20],' '
+mov byte [0x22],'S'
+mov byte [0x24],'i'
+mov byte [0x26],'r'
+mov byte [0x28],' '
+mov byte [0x2a],'J'
+mov byte [0x2c],'a'
+mov byte [0x2e],'c'
+mov byte [0x30],'k'
+mov byte [0x32],'i'
+mov byte [0x34],'e'
+mov byte [0x36],' '
+mov byte [0x38],'u'
+mov byte [0x3a],'s'
+mov byte [0x3c],'i'
+mov byte [0x3e],'n'
+mov byte [0x40],'g'
+mov byte [0x42],' '
+mov byte [0x44],'N'
+mov byte [0x46],'A'
+mov byte [0x48],'S'
+mov byte [0x4a],'M'
+mov byte [0x4c],'!'
+
+jmp $
+
+times 510-($-$$) db 0
+db 0x55,0xaa
