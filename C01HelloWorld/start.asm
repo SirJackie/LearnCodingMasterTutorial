@@ -1,6 +1,25 @@
-mov ax, 0b800h
-mov ds, ax
+; Set the Data Segment to 0xb800 (Color Text Buffer)
+mov ax, 0xb800  ; 3 Byte
+mov ds, ax      ; 2 Byte
 
+; See how long the program till now is
+; And print it out
+; This is a great example which shows how $, $$ and add command works
+; --------------------------------------------------------------------
+; $ : Memory Address of this line of code
+; $$ : Memory Address of the first line of code
+; $ - $$ : The length of the code until now
+; add a, b : Add a and b, The result will be stored into a
+mov ax, $ - $$
+mov bl, 0x30
+mov cl, 0x30
+add bl, ah
+add cl, al
+mov byte [0x50], bl
+mov byte [0x52], cl
+
+; A Hello World from Sir Jackie
+; Every one loves to "Hello World", Jackie's the same haha
 mov byte [0x00],'H'
 mov byte [0x02],'e'
 mov byte [0x04],'l'
@@ -41,7 +60,14 @@ mov byte [0x48],'S'
 mov byte [0x4a],'M'
 mov byte [0x4c],'!'
 
+; Make a infinity loop
 jmp $
 
+; Write zeros at the end of the program
 times 510-($-$$) db 0
+
+; Write 55 AA as the end of the MBR Sector
 db 0x55,0xaa
+
+; The END
+; Total size after compiling should be 512 Byte
