@@ -1,4 +1,11 @@
-section code align=16 vstart=0x7c00
+; Define Constants
+MaximunLoopingTime equ 0xffff
+DefaultAttributeChar equ 0x07
+VideoRAM equ 0xb800
+BootLoader equ 0x7c00
+
+; Start a Section
+section code align=16 vstart=BootLoader
 
 Main:
     ; ; ; A question here:
@@ -6,7 +13,7 @@ Main:
     ; ; ; Shouldn't ds be 0x7c00, where the program loads?
     ; ; ; Since the vstart is 0x7c00???
     ; ; Set Parameter ds
-    ; mov ax, 0x7c00
+    ; mov ax, BootLoader
     ; mov ds, ax
 
     ; Set Parameter si
@@ -32,12 +39,12 @@ PrintString:
 
     .setup:
     ; Set Video RAM
-    mov ax, 0xb800
+    mov ax, VideoRAM
     mov es, ax
     ; Set Attribute Char
-    mov bh, 0x07
+    mov bh, DefaultAttributeChar
     ; Set Looping Times
-    mov cx, 0xffff
+    mov cx, MaximunLoopingTime
 
     .printchar:
     ; Read From Source Index(SI)
