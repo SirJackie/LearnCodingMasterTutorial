@@ -46,10 +46,10 @@ PrintString:
     .return:
     ret
 
+MyString db 'A quick brown fox jump over the lazy dog.'
+         db 0
+
 End:
     jmp $
     times 510 - ($ - $$) db 0
     db 0x55, 0xaa
-
-MyString db 'A quick brown fox jump over the lazy dog.'
-         db 0
