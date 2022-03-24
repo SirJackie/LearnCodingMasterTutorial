@@ -22,7 +22,7 @@ Main:
     mov si, MyString
 
     ; Set Parameter di = 0x00
-    xor di, di
+    mov di, 0x00A0
 
     ; Call the Function
     call PrintString
@@ -36,7 +36,7 @@ Main:
 
     ; Print Another Line of String
     mov si, MyString
-    xor di, 0xA0
+    mov di, 0x0000
     call PrintString
     jmp End
 
