@@ -8,10 +8,12 @@ BootLoader equ 0x7c00
 section code align=16 vstart=BootLoader
 
 Main:
-    ; ; ; A question here:
+
+    ; ; ; Question 1:
     ; ; ; Why it doesn't work if I set ds as 0x7c00
     ; ; ; Shouldn't ds be 0x7c00, where the program loads?
     ; ; ; Since the vstart is 0x7c00???
+    
     ; ; Set Parameter ds
     ; mov ax, BootLoader
     ; mov ds, ax
@@ -26,6 +28,16 @@ Main:
     call PrintString
 
     ; Jump to the Infinite Loop
+    jmp End
+
+    ; ; ; Question 2:
+    ; ; ; PrintString seems to be one-time usable
+    ; ; ; It can't be reused like this:
+
+    ; Print Another Line of String
+    mov si, MyString
+    xor di, 0xA0
+    call PrintString
     jmp End
 
 PrintString:
